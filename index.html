@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIRA - Creative Design Assistant</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIRA | AI Assistant</title>
 
   <style>
     * {
@@ -15,45 +15,61 @@
     }
 
     body {
-      min-height: 100vh;
-      background: #101114;
-      color: #f5f5f5;
+      background: #212121;
+      color: #fff;
+      height: 100vh;
       display: flex;
+      overflow: hidden;
     }
 
     .sidebar {
-      width: 250px;
-      background: #17181d;
-      border-right: 1px solid #30313a;
-      padding: 20px;
+      width: 260px;
+      background: #171717;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
-    .logo {
-      font-size: 28px;
+    .brand {
+      font-size: 24px;
       font-weight: bold;
-      color: #8b9cff;
+      padding: 10px;
+      color: #fff;
     }
 
     .new-chat {
-      border: 1px solid #454755;
-      background: #252733;
+      background: transparent;
       color: white;
+      border: 1px solid #555;
+      border-radius: 8px;
       padding: 12px;
-      border-radius: 10px;
+      text-align: left;
       cursor: pointer;
     }
 
     .new-chat:hover {
-      background: #343747;
+      background: #2d2d2d;
+    }
+
+    .history-title {
+      color: #aaa;
+      font-size: 13px;
+      margin: 8px;
     }
 
     .history {
-      color: #b8bac7;
+      color: #ddd;
       font-size: 14px;
       line-height: 2;
+      padding: 8px;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      color: #aaa;
+      font-size: 13px;
+      padding: 10px;
     }
 
     .main {
@@ -63,107 +79,120 @@
       min-width: 0;
     }
 
-    header {
-      padding: 18px 25px;
-      border-bottom: 1px solid #30313a;
+    .topbar {
+      height: 60px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid #3a3a3a;
+      background: #212121;
     }
 
-    header h1 {
-      font-size: 20px;
+    .topbar-title {
+      font-size: 18px;
+      font-weight: bold;
     }
 
-    .status {
-      color: #7ee2a8;
-      font-size: 13px;
+    .online {
+      font-size: 12px;
+      color: #65d391;
     }
 
-    .chat {
+    .chat-area {
       flex: 1;
-      padding: 25px;
       overflow-y: auto;
+      padding: 28px 20px;
+    }
+
+    .welcome {
+      max-width: 760px;
+      margin: 90px auto 0;
+      text-align: center;
+    }
+
+    .welcome h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .welcome p {
+      color: #aaa;
+      line-height: 1.6;
     }
 
     .message {
       max-width: 850px;
-      margin: 0 auto 22px;
+      margin: 0 auto 25px;
       display: flex;
-      gap: 12px;
+      gap: 14px;
     }
 
     .avatar {
-      width: 35px;
-      height: 35px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: #737cff;
+      background: #10a37f;
       display: grid;
       place-items: center;
-      font-weight: bold;
       flex-shrink: 0;
+      font-weight: bold;
     }
 
     .user .avatar {
-      background: #343640;
+      background: #555;
     }
 
-    .bubble {
-      background: #1c1e26;
-      border: 1px solid #30313a;
-      padding: 15px;
-      border-radius: 12px;
-      line-height: 1.6;
-      white-space: pre-wrap;
+    .content {
       flex: 1;
+      min-width: 0;
+      line-height: 1.7;
+      white-space: pre-wrap;
     }
 
-    .user .bubble {
-      background: #242630;
-    }
-
-    .design-card {
-      margin-top: 15px;
-      border: 1px solid #5058a8;
-      background: linear-gradient(135deg, #20243e, #171923);
-      border-radius: 15px;
+    .creative-card {
+      margin-top: 18px;
+      border: 1px solid #555;
+      border-radius: 14px;
       padding: 20px;
+      background: #292929;
     }
 
-    .design-card h3 {
-      color: #aab2ff;
+    .creative-card h3 {
       margin-bottom: 10px;
+      color: #9de7d2;
     }
 
-    .design-visual {
+    .visual {
+      margin-top: 16px;
       min-height: 180px;
-      border: 1px dashed #737cff;
+      border: 1px dashed #777;
       border-radius: 12px;
       display: grid;
       place-items: center;
       text-align: center;
+      font-size: 54px;
       padding: 20px;
-      margin-top: 15px;
-      font-size: 50px;
     }
 
-    .input-area {
-      padding: 18px 25px;
-      border-top: 1px solid #30313a;
+    .input-section {
+      padding: 16px 20px 22px;
+      background: #212121;
     }
 
-    .input-box {
+    .input-wrapper {
       max-width: 850px;
       margin: auto;
-      display: flex;
-      gap: 10px;
-      background: #1c1e26;
-      border: 1px solid #454755;
+      border: 1px solid #666;
       border-radius: 14px;
-      padding: 10px;
+      background: #2f2f2f;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
     }
 
-    input {
+    #prompt {
       flex: 1;
       min-width: 0;
       background: transparent;
@@ -171,32 +200,40 @@
       outline: none;
       color: white;
       font-size: 15px;
-      padding: 10px;
+      padding: 12px;
     }
 
     button {
+      cursor: pointer;
+    }
+
+    .icon-button {
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: white;
+      font-size: 19px;
+      padding: 9px;
+    }
+
+    .icon-button:hover {
+      background: #444;
+    }
+
+    .send-button {
+      background: #fff;
+      color: #111;
       border: none;
       border-radius: 9px;
       padding: 10px 14px;
-      cursor: pointer;
       font-weight: bold;
     }
 
-    .mic {
-      background: #343747;
-      color: white;
-    }
-
-    .send {
-      background: #737cff;
-      color: white;
-    }
-
-    .hint {
+    .footer-note {
       text-align: center;
-      color: #858897;
-      font-size: 12px;
-      margin-top: 10px;
+      color: #888;
+      font-size: 11px;
+      margin-top: 9px;
     }
 
     @media (max-width: 700px) {
@@ -204,13 +241,20 @@
         display: none;
       }
 
-      .chat,
-      .input-area {
-        padding: 15px;
+      .welcome {
+        margin-top: 60px;
       }
 
-      header {
-        padding: 15px;
+      .welcome h1 {
+        font-size: 26px;
+      }
+
+      .chat-area {
+        padding: 20px 14px;
+      }
+
+      .input-section {
+        padding: 12px;
       }
     }
   </style>
@@ -218,81 +262,93 @@
 
 <body>
   <aside class="sidebar">
-    <div class="logo">AIRA</div>
+    <div class="brand">AIRA</div>
 
-    <button class="new-chat" id="newChat">＋ New Chat</button>
+    <button class="new-chat" id="newChat">＋ New chat</button>
 
-    <div class="history">
-      <strong>Project Demo</strong><br />
-      Creative Design Assistant<br />
-      Rocket Design<br />
-      Flying Car Concept
+    <div>
+      <div class="history-title">Recent chats</div>
+      <div class="history" id="history">
+        No conversations yet
+      </div>
+    </div>
+
+    <div class="sidebar-bottom">
+      AIRA AI Assistant<br>
+      Research • Memory • Creative Design
     </div>
   </aside>
 
   <main class="main">
-    <header>
-      <h1>AIRA Creative Design Assistant</h1>
-      <span class="status">● Prototype Online</span>
+    <header class="topbar">
+      <div class="topbar-title">AIRA</div>
+      <div class="online">● Prototype online</div>
     </header>
 
-    <section class="chat" id="chat">
-      <div class="message">
-        <div class="avatar">A</div>
-        <div class="bubble">
-          Hello! I am AIRA. ✨
-
-          I can understand your creative ideas and create a design concept.
-
-          Try:
-          “Create a futuristic rocket with four engines.”
-        </div>
+    <section class="chat-area" id="chatArea">
+      <div class="welcome" id="welcome">
+        <h1>How can I help you today?</h1>
+        <p>
+          Chat naturally with AIRA. Ask questions, explain your ideas,
+          research topics, or create creative design concepts.
+        </p>
       </div>
     </section>
 
-    <section class="input-area">
-      <div class="input-box">
+    <section class="input-section">
+      <div class="input-wrapper">
         <input
-          id="userInput"
+          id="prompt"
           type="text"
           placeholder="Message AIRA..."
           autocomplete="off"
-        />
+        >
 
-        <button class="mic" id="micButton" title="Voice input">🎙️</button>
-        <button class="send" id="sendButton">➤</button>
+        <button class="icon-button" id="micButton" title="Voice input">
+          🎙️
+        </button>
+
+        <button class="send-button" id="sendButton">
+          ↑
+        </button>
       </div>
 
-      <div class="hint">
-        AIRA Prototype • Text and voice interaction • Creative design demo
+      <div class="footer-note">
+        AIRA can make mistakes. Verify important information.
       </div>
     </section>
   </main>
 
   <script>
-    const chat = document.getElementById("chat");
-    const userInput = document.getElementById("userInput");
+    const chatArea = document.getElementById("chatArea");
+    const promptInput = document.getElementById("prompt");
     const sendButton = document.getElementById("sendButton");
     const micButton = document.getElementById("micButton");
     const newChatButton = document.getElementById("newChat");
+    const history = document.getElementById("history");
+    const welcome = document.getElementById("welcome");
 
-    let currentDesign = null;
+    let messages = [];
 
-    function addMessage(sender, text, design = null) {
+    function addMessage(role, text, design = null) {
+      if (welcome) {
+        welcome.remove();
+      }
+
       const message = document.createElement("div");
-      message.className = "message " + sender;
+      message.className = "message " + role;
 
       const avatar = document.createElement("div");
       avatar.className = "avatar";
-      avatar.textContent = sender === "user" ? "U" : "A";
+      avatar.textContent = role === "user" ? "U" : "A";
 
-      const bubble = document.createElement("div");
-      bubble.className = "bubble";
-      bubble.textContent = text;
+      const content = document.createElement("div");
+      content.className = "content";
+      content.textContent = text;
 
       if (design) {
         const card = document.createElement("div");
-        card.className = "design-card";
+        card.className = "creative-card";
 
         const title = document.createElement("h3");
         title.textContent = design.title;
@@ -301,52 +357,69 @@
         details.textContent = design.details;
 
         const visual = document.createElement("div");
-        visual.className = "design-visual";
+        visual.className = "visual";
         visual.textContent = design.icon;
 
         card.appendChild(title);
         card.appendChild(details);
         card.appendChild(visual);
-        bubble.appendChild(card);
+        content.appendChild(card);
       }
 
       message.appendChild(avatar);
-      message.appendChild(bubble);
-      chat.appendChild(message);
-      chat.scrollTop = chat.scrollHeight;
+      message.appendChild(content);
+      chatArea.appendChild(message);
+      chatArea.scrollTop = chatArea.scrollHeight;
     }
 
-    function detectDesign(text) {
+    function speak(text) {
+      if (!("speechSynthesis" in window)) return;
+
+      speechSynthesis.cancel();
+
+      const voice = new SpeechSynthesisUtterance(text);
+      voice.lang = "en-IN";
+      voice.rate = 0.95;
+      voice.pitch = 1;
+
+      speechSynthesis.speak(voice);
+    }
+
+    function generateDesign(text) {
       const lower = text.toLowerCase();
 
       if (lower.includes("rocket")) {
         return {
           title: "🚀 Futuristic Rocket Concept",
-          details: "Blue metallic body, glass window, aerodynamic wings and powerful engines.",
+          details:
+            "A futuristic rocket with a metallic body, glass window, aerodynamic wings and multiple engines.",
           icon: "🚀"
         };
       }
 
       if (lower.includes("car")) {
         return {
-          title: "🏎️ Futuristic Flying Car Concept",
-          details: "Smart electric vehicle with hover technology, glass roof and modern design.",
+          title: "🏎️ Futuristic Flying Car",
+          details:
+            "A smart electric flying car with hover technology, glass roof and advanced navigation.",
           icon: "🏎️"
         };
       }
 
       if (lower.includes("house") || lower.includes("home")) {
         return {
-          title: "🏠 Smart Future Home Concept",
-          details: "Modern smart house with solar panels, glass walls and an automated garden.",
+          title: "🏠 Smart Future Home",
+          details:
+            "A modern smart home with solar panels, automated security and an intelligent garden.",
           icon: "🏠"
         };
       }
 
       if (lower.includes("robot")) {
         return {
-          title: "🤖 Intelligent Robot Concept",
-          details: "Friendly AI robot with sensor eyes, movable arms and a smart assistant system.",
+          title: "🤖 Intelligent Robot",
+          details:
+            "An AI robot with sensors, movable arms, voice interaction and human-friendly behavior.",
           icon: "🤖"
         };
       }
@@ -357,99 +430,114 @@
     function createReply(text) {
       const lower = text.toLowerCase();
 
-      if (
-        lower.includes("make it silver") ||
-        lower.includes("silver")
-      ) {
+      if (lower.includes("make it silver") || lower.includes("silver")) {
         return {
-          text: "Done! I updated the design concept with a silver metallic finish.",
+          text: "I understood your modification. The design is updated with a silver metallic finish.",
           design: {
-            title: "✨ Updated Silver Design",
-            details: "The previous design now has a silver metallic body and futuristic appearance.",
+            title: "✨ Silver Design Update",
+            details: "The previous concept now has a silver metallic appearance.",
             icon: "🚀"
           }
         };
       }
 
-      if (
-        lower.includes("add wings") ||
-        lower.includes("larger wings")
-      ) {
+      if (lower.includes("add wings") || lower.includes("larger wings")) {
         return {
-          text: "Done! I added larger aerodynamic wings to the design.",
+          text: "I added larger aerodynamic wings to the design concept.",
           design: {
             title: "🪽 Wing Modification",
-            details: "The design now includes larger aerodynamic wings for improved visual style.",
+            details: "The design now includes larger wings.",
             icon: "🚀🪽"
           }
         };
       }
 
-      if (
-        lower.includes("six engines") ||
-        lower.includes("6 engines")
-      ) {
+      if (lower.includes("six engines") || lower.includes("6 engines")) {
         return {
-          text: "Done! The design now contains six engines.",
+          text: "The design has been updated with six engines.",
           design: {
             title: "🔥 Six-Engine Modification",
-            details: "The rocket concept has been updated with six powerful engines.",
+            details: "The rocket concept now contains six engines.",
             icon: "🚀🔥🔥🔥"
           }
         };
       }
 
-      const design = detectDesign(text);
+      const design = generateDesign(text);
 
       if (design) {
-        currentDesign = design;
         return {
-          text: "I understood your idea and created a design concept below. You can modify it using another message.",
+          text:
+            "I understood your creative intention and prepared a design concept. You can modify it with another message.",
           design
         };
       }
 
-      if (lower.includes("hello") || lower.includes("hi")) {
+      if (
+        lower.includes("hello") ||
+        lower.includes("hi") ||
+        lower.includes("hey")
+      ) {
         return {
-          text: "Hello! Tell me what you want to create—rocket, car, house, robot or any creative object."
+          text:
+            "Hello! I am AIRA. You can ask me questions, request research, or describe a creative idea."
+        };
+      }
+
+      if (lower.includes("research")) {
+        return {
+          text:
+            "Research Mode is planned for the next version. It will collect information, compare sources and provide a clear summary with references."
         };
       }
 
       return {
-        text: "I understood your request. In the advanced version, I can connect this interface to an AI model and generate real images or 3D designs."
+        text:
+          "I understood your message. This is AIRA's working prototype. The next advanced version will connect a real AI model for deeper human-language understanding, research, memory and reasoning."
       };
     }
 
     function sendMessage() {
-      const text = userInput.value.trim();
+      const text = promptInput.value.trim();
 
       if (!text) return;
 
       addMessage("user", text);
-      userInput.value = "";
+      messages.push({ role: "user", text });
+
+      promptInput.value = "";
 
       setTimeout(() => {
         const reply = createReply(text);
+
         addMessage("assistant", reply.text, reply.design);
+        messages.push({ role: "assistant", text: reply.text });
+
+        history.textContent = "Current AIRA conversation";
+
+        speak(reply.text);
       }, 500);
     }
 
     sendButton.addEventListener("click", sendMessage);
 
-    userInput.addEventListener("keydown", function(event) {
+    promptInput.addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
         sendMessage();
       }
     });
 
     newChatButton.addEventListener("click", function() {
-      chat.innerHTML = "";
-      currentDesign = null;
+      chatArea.innerHTML = "";
+      messages = [];
+      history.textContent = "No conversations yet";
 
-      addMessage(
-        "assistant",
-        "New chat started. What creative idea should we design today?"
-      );
+      const newWelcome = document.createElement("div");
+      newWelcome.className = "welcome";
+      newWelcome.innerHTML =
+        "<h1>How can I help you today?</h1><p>Start a new conversation with AIRA.</p>";
+
+      chatArea.appendChild(newWelcome);
     });
 
     const SpeechRecognition =
@@ -466,7 +554,7 @@
       });
 
       recognition.addEventListener("result", function(event) {
-        userInput.value = event.results[0][0].transcript;
+        promptInput.value = event.results[0][0].transcript;
         micButton.textContent = "🎙️";
       });
 
@@ -475,7 +563,7 @@
       });
     } else {
       micButton.addEventListener("click", function() {
-        alert("Voice input is not supported in this browser. Try Google Chrome.");
+        alert("Voice input is not supported. Please use Google Chrome.");
       });
     }
   </script>
